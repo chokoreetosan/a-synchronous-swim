@@ -11,22 +11,24 @@
   // Note: remember to fix the URL below.
   /////////////////////////////////////////////////////////////////////
 
-  const ajaxFileUplaod = (file) => {
+  const ajaxFileUpload = (file) => {
     var formData = new FormData();
     formData.append('file', file);
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN',
+      url: serverUrl,
       cache: false,
       contentType: false,
       processData: false,
-      success: () => {
+      success: (data) => {
         // reload the page
         window.location = window.location.href;
+        console.log('data sent!')
       }
     });
   };
+
 
   $('form').on('submit', function(e) {
     e.preventDefault();
@@ -42,8 +44,7 @@
       console.log('Not a jpg file!');
       return;
     }
-
-    ajaxFileUplaod(file);
+    ajaxFileUpload(file);
   });
 
 })();
