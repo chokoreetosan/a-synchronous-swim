@@ -10,7 +10,7 @@ $('body').on('keydown', (event) => {
     $.ajax({
       url: serverUrl + '/moves',
       type: 'POST',
-      data: JSON.stringify(direction.toLowerCase()),
+      data: direction.toLowerCase(),
       success: (dir) => {
         console.log('successful dir POST: ' + dir)
         SwimTeam.move(dir)
