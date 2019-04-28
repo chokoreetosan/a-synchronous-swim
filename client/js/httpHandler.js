@@ -1,10 +1,45 @@
 (function() {
 
+  // TODO: build the swim command fetcher here
+  console.log('Client-side httpHandler running...')
   const serverUrl = 'http://127.0.0.1:3000';
 
-  //
-  // TODO: build the swim command fetcher here
-  //
+  //passing in server URL w/ the endpoint '/moves'
+  //when success, we get a move back from our server
+    //the 2nd argument to jQuery .get is a success callback
+
+  //   $.get(serverUrl + '/moves', (dir) => {
+  //   console.log(dir);
+  //   // SwimTeam.move(dir)
+  // }) //polling the server for enqueued directions
+
+  $.ajax({
+    url: serverUrl + '/moves',
+    type: 'GET',
+    success: (dir) => {
+      console.log('success (alt): ' + dir)
+      SwimTeam.move(dir)
+    }
+  })
+
+  // recursion to get it to continuously move
+  // function getDirectionFromServer(){
+  //   $.get(serverUrl + '/moves', (dir) => {
+  //     SwimTeam.move(dir)
+  //     setTimeout(getDirectionFromServer(), 200);
+  //   })
+  // }
+  // getDirectionFromServer()
+
+  // $.ajax({
+  //   url: serverUrl + '/moves',
+  //   type: 'GET',
+  //   success: (dir) => {
+  //     console.log('success: alternative ' + dir)
+  //   }
+  // })
+
+
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
