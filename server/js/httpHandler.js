@@ -20,27 +20,36 @@ module.exports.router = (req, res, next = ()=>{}) => {
   console.log('testing .....')
 
   //writing a route at our server at our '/moves' endpoint to handle GET requests to respond w/ a move
-
   if (req.method === 'OPTIONS'){
     res.writeHead(200, headers);
     res.end();
-  }else if (req.method === 'GET'){
+  }
+  if (req.method === 'GET' && req.url === '/moves'){
    // lets node know that request is successfully being responded to
-    if (req.url === '/moves'){
       res.writeHead(200, headers);
-
       //getting it to respond w/ a move
       res.write(getRandomMove()) //write it onto the response itself
-
       res.end();   //how to close a status request
-   }else if(req.method === 'POST'){
 
-    res.writeHead(200, headers);
+  }
+  if(req.method === 'POST' && req.url === '/moves'){
 
-    res.end();
+    // res.write('post works');
 
-   }
- }
+    let body = '';
 
-  // next();
+    req.on('data', (chunk)=> {
+      body += chunk;
+    }).on('end', ()=> {
+      console.log(body.toString())
+      res.writeHead(200, headers);
+      res.write(body.toString())
+      res.end();
+    })
+
+
+    // res.end();
+  }
+
+// next();
 };

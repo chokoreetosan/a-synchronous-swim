@@ -13,14 +13,14 @@
   //   // SwimTeam.move(dir)
   // }) //polling the server for enqueued directions
 
-  $.ajax({
-    url: serverUrl + '/moves',
-    type: 'GET',
-    success: (dir) => {
-      console.log('success (alt): ' + dir)
-      SwimTeam.move(dir)
-    }
-  })
+  // $.ajax({
+  //   url: serverUrl + '/moves',
+  //   type: 'GET',
+  //   success: (dir) => {
+  //     console.log('success (alt): ' + dir)
+  //     SwimTeam.move(dir)
+  //   }
+  // })
 
   // recursion to get it to continuously move
   // function getDirectionFromServer(){

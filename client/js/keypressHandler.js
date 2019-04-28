@@ -14,6 +14,7 @@ $('body').on('keydown', (event) => {
       success: (dir) => {
         console.log('successful dir POST: ' + dir)
         SwimTeam.move(dir)
+        // SwimTeam.move(dir)
       }
     })
 
