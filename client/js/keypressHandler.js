@@ -12,7 +12,7 @@ $('body').on('keydown', (event) => {
       type: 'POST',
       data: direction.toLowerCase(),
       success: (dir) => {
-        console.log('successful dir POST: ' + dir)
+        console.log('POST success: ' + dir)
         SwimTeam.move(dir)
         // SwimTeam.move(dir)
       }
